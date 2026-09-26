@@ -1,0 +1,6 @@
+---
+const { large = false } = Astro.props;
+---
+<span class:list={['brand-logo', { 'brand-logo-large': large }]} aria-hidden="true">
+  <img src="./sightshock-logo.png" alt="" width="1448" height="1086" loading={large ? 'lazy' : 'eager'} decoding="async" />
+</span>

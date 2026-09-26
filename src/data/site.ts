@@ -1,29 +1,29 @@
 export const site = {
   name: 'SightShock',
   url: 'https://www.sightshock.com',
-  title: 'SightShock — Infrastructure built to be dependable',
-  description: 'Cloud, Kubernetes, automation and platform engineering for organizations that need infrastructure to perform when it matters.',
+  title: 'SightShock — Make critical infrastructure dependable',
+  description: 'Enterprise infrastructure consulting for critical applications: architecture, application delivery, performance, networking and operational readiness.',
   hero: {
-    eyebrow: 'Infrastructure / engineering / clarity',
+    eyebrow: 'Enterprise infrastructure / application delivery',
     title: ['Complex infrastructure.', 'Made dependable.'],
-    description: 'Cloud, Kubernetes, automation and platform engineering for organizations that need infrastructure to perform when it matters.',
+    description: 'When critical applications depend on cloud, networks and platforms working together, SightShock helps you design, troubleshoot and operate the whole system with confidence.',
   },
   positioning: {
-    title: "Technology shouldn't become harder to operate as it becomes more powerful.",
-    description: 'SightShock helps organizations design infrastructure that is scalable, observable, automated and understandable.',
+    title: 'Your most important systems deserve more than a diagram that looks good on paper.',
+    description: 'We connect architecture to real workloads, test how systems behave, and leave your team with the knowledge to run them well.',
   },
   businessImpact: {
-    title: 'Technology should create room to move.',
-    description: 'The value of infrastructure reaches beyond the platform: steadier operations, safer change and clearer decisions for the business.',
+    title: 'Reliability people can feel.',
+    description: 'Infrastructure work pays off when applications stay available, changes are easier to make, and teams can resolve problems before customers carry the cost.',
     topics: [
-      { title: 'Business continuity', description: 'Design for failure and recovery so critical services have a more dependable foundation.' },
-      { title: 'Delivery confidence', description: 'Make changes repeatable and easier to validate before they reach production.' },
-      { title: 'Operational visibility', description: 'Give teams the signals and shared context they need to make informed decisions.' },
+      { title: 'Keep critical services moving', description: 'Design application delivery, network paths and recovery around the workloads the business depends on.' },
+      { title: 'Change with evidence', description: 'Benchmark, test and validate the environment before a deployment becomes an operational surprise.' },
+      { title: 'Resolve issues faster', description: 'Give teams useful monitoring, documented baselines and a clearer path from symptom to cause.' },
     ],
   },
-  about: 'SightShock brings enterprise infrastructure experience to the systems that matter most. From AWS and Kubernetes to Linux, networking and high availability, the work is grounded in operational reality: clear architecture, repeatable automation, useful documentation and knowledge transfer your team can build on.',
-  capabilities: ['AWS', 'Kubernetes', 'EKS', 'RKE2', 'Platform engineering', 'Terraform', 'GitOps', 'Flux', 'Linux', 'Networking', 'Observability', 'High availability', 'Automation', 'Documentation', 'Knowledge transfer'],
-  contact: { title: 'Have a difficult infrastructure problem?', subtitle: "Let's talk." },
+  about: 'SightShock is built on more than 25 years of hands-on infrastructure experience across healthcare technology, financial services, telecommunications and education. That includes guiding enterprise application deployments, setting performance and validation standards, leading network and application delivery work, and resolving difficult production issues. We bring the same practical approach to every engagement: understand the workload, design for its real constraints, prove the result and transfer the knowledge to your team.',
+  capabilities: ['Enterprise application delivery', 'Performance troubleshooting', 'AWS', 'Azure', 'Kubernetes', 'Terraform', 'F5 BIG-IP', 'Network architecture', 'Security', 'Linux', 'Monitoring', 'High availability', 'Documentation', 'Knowledge transfer'],
+  contact: { title: 'Is a critical system harder to run than it should be?', subtitle: "Let's talk." },
 };
 
 export const navigation = [

@@ -25,7 +25,9 @@ npm run preview
 - `src/data/caseStudies.ts`: anonymized work cards. Replace outcome placeholders only with approved, accurate language.
 - `src/styles/global.css`: visual system and responsive styling.
 - `public/hero-background.webp`: optimized hero background. Replace this file to update the supplied image.
-- `public/business-impact.webp`: optimized business section illustration.
+- `public/sightshock-logo.png`: original transparent logo artwork used in the header, About section and footer.
+- `public/blue-particles-loop.mp4` and `public/blue-particles-poster.jpg`: short, silent background for the Thinking section and its still fallback. The video loads when the section enters view and stays still for reduced-motion or data-saving visitors.
+- `public/business-impact.webp`: business section illustration.
 - `src/components/`: navigation, infrastructure diagram, form and footer.
 
 ## Contact form

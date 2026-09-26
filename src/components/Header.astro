@@ -1,9 +1,10 @@
 ---
 import { navigation } from '../data/site';
+import BrandLogo from './BrandLogo.astro';
 ---
 <header class="site-header" id="top">
   <div class="shell header-inner">
-    <a class="wordmark" href="#top" aria-label="SightShock, back to top"><span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span></span>SIGHTSHOCK</a>
+    <a class="wordmark" href="#top" aria-label="SightShock, back to top"><BrandLogo />SIGHTSHOCK</a>
     <nav class="desktop-nav" aria-label="Main navigation">
       {navigation.map(({ label, href }) => <a href={href}>{label}</a>)}
     </nav>

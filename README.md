@@ -43,4 +43,4 @@ Before launch, connect a provider and send a real test submission. See `DEPLOYME
 
 ## Deployment
 
-`.github/workflows/deploy.yml` builds on every push to `main` and deploys `dist/` through GitHub Pages. `astro.config.mjs` uses `https://www.sightshock.com` as the canonical site URL and intentionally has no repository base path because the final site uses a custom domain. This local repository has no GitHub remote yet; add the remote before expecting automatic deployment.
+`.github/workflows/deploy.yml` builds on every push to `main` and deploys `dist/` through GitHub Pages. `astro.config.mjs` uses `https://www.sightshock.com` as the canonical site URL. Site assets use relative paths so the temporary GitHub Pages project URL works before the custom domain is connected. The repository remote is `https://github.com/conradmann/sightshock-website.git`.

@@ -2,13 +2,13 @@
 
 ## 1. GitHub repository and Pages
 
-1. Add the GitHub remote, then push this project's `main` branch to the `sightshock-website` repository. This checkout has no remote configured yet.
+1. Push this project's `main` branch to `https://github.com/conradmann/sightshock-website`. The repository and GitHub Pages Actions source are already configured.
 2. In **Settings → Pages**, choose **GitHub Actions** as the build and deployment source.
 3. In **Settings → Pages → Custom domain**, enter `www.sightshock.com` and save. With an Actions deployment, GitHub uses this setting; `public/CNAME` is included as a requested project artifact but does not replace the Pages setting.
 4. Add `PUBLIC_CONTACT_FORM_ENDPOINT` as a repository Actions variable after choosing a form provider (see README). Deploy again and submit a real test message.
 5. Push to `main`, check the **Deploy to GitHub Pages** workflow, and verify the displayed Pages URL. When the certificate is ready, enable **Enforce HTTPS** in Pages settings.
 
-The Astro `site` setting and canonical/OG links assume the final `www` domain. GitHub's temporary repository URL is only for deployment checks before DNS is ready.
+The Astro `site` setting and canonical/OG links assume the final `www` domain. The temporary GitHub Pages URL remains usable because visible site assets use relative paths.
 
 ## 2. GoDaddy DNS for `www.sightshock.com`
 

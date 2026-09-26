@@ -1,0 +1,100 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import NetworkDiagram from '../components/NetworkDiagram.astro';
+import ContactForm from '../components/ContactForm.astro';
+import { site } from '../data/site';
+import { services, problems, approach } from '../data/services';
+import { caseStudies } from '../data/caseStudies';
+---
+<BaseLayout>
+  <Header />
+  <main id="main">
+    <div class="hero-backdrop"><section class="hero shell" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <p class="eyebrow"><span class="eyebrow-line"></span>{site.hero.eyebrow}</p>
+        <h1 id="hero-title"><span>{site.hero.title[0]}</span><span class="accent-text">{site.hero.title[1]}</span></h1>
+        <p class="hero-description">{site.hero.description}</p>
+        <div class="hero-actions"><a class="button button-accent" href="#services">Explore services <span aria-hidden="true">↗</span></a><a class="text-link" href="#contact">Start a conversation <span aria-hidden="true">↗</span></a></div>
+      </div>
+      <div class="hero-visual"><NetworkDiagram hero={true} /><div class="hero-side-note">ENGINEERED FOR WHAT'S NEXT <span>001 / 005</span></div></div>
+      <div class="hero-foot"><span>SCROLL TO EXPLORE</span><span class="scroll-mark" aria-hidden="true">↓</span><span>STRATEGY → SYSTEMS → CONFIDENCE</span></div>
+    </section></div>
+
+    <section class="positioning section-pad" aria-labelledby="positioning-title">
+      <div class="shell positioning-grid"><p class="section-kicker"><span class="kicker-index">01 / THE THINKING</span><span>Make complexity workable.</span></p><div><h2 id="positioning-title" class="display-title">{site.positioning.title}</h2><div class="positioning-bottom"><span class="crosshair" aria-hidden="true">✳</span><p>{site.positioning.description}</p></div></div></div>
+    </section>
+
+    <section class="services-section section-pad" id="services" aria-labelledby="services-title">
+      <div class="shell section-heading"><p class="section-kicker"><span class="kicker-index">02 / EXPERTISE</span><span>What we do</span></p><div><h2 id="services-title" class="display-title">Built for the<br/><em>real world.</em></h2><p>Focused expertise across the systems, platforms and practices that keep your business moving.</p></div></div>
+      <div class="shell services-layout"><div class="services-list">
+        {services.map((service) => <article class="service-item" data-service={service.diagram}>
+          <div class="service-top"><span class="item-index">/{service.number}</span><span class="service-plus" aria-hidden="true">↗</span></div>
+          <h3>{service.title}</h3><p class="service-summary">{service.summary}</p>
+          <ul class="capability-list">{service.capabilities.map((capability) => <li>{capability}</li>)}</ul>
+        </article>)}
+      </div><div class="services-visual"><div class="visual-sticky"><div class="visual-heading"><span>INFRASTRUCTURE MODEL</span><span class="visual-counter">01 / 05</span></div><NetworkDiagram /><div class="visual-caption"><span>01 — CLOUD INFRASTRUCTURE</span><span>DESIGNED TO ADAPT</span></div></div></div></div>
+    </section>
+
+    <section class="problems-section section-pad" aria-labelledby="problems-title">
+      <div class="shell"><div class="section-heading"><p class="section-kicker"><span class="kicker-index">03 / THE CHALLENGE</span><span>Sound familiar?</span></p><div><h2 id="problems-title" class="display-title">When the system<br/><em>gets in the way.</em></h2></div></div>
+        <div class="problem-list">{problems.map(({ problem, solution }, index) => <details class="problem-item"><summary><span class="item-index">0{index + 1}</span><span class="problem-title">“{problem}”</span><span class="problem-icon" aria-hidden="true">+</span></summary><div class="problem-answer"><span>THE WAY FORWARD</span><p>{solution}</p></div></details>)}</div>
+      </div>
+    </section>
+
+    <section class="business-section section-pad" aria-labelledby="business-title">
+      <div class="shell business-grid">
+        <figure class="business-visual">
+          <img src="/business-impact.webp" width="1600" height="1066" loading="lazy" decoding="async" alt="A projected growth chart above an outstretched hand" />
+          <figcaption>Conceptual illustration · not client data</figcaption>
+        </figure>
+        <div class="business-copy">
+          <p class="section-kicker"><span class="kicker-index">THE BUSINESS CASE</span><span>What dependable systems enable</span></p>
+          <h2 id="business-title" class="display-title">{site.businessImpact.title}</h2>
+          <p class="business-intro">{site.businessImpact.description}</p>
+          <div class="business-topics">{site.businessImpact.topics.map((topic, index) => <article><span class="item-index">0{index + 1}</span><div><h3>{topic.title}</h3><p>{topic.description}</p></div></article>)}</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="approach-section section-pad" aria-labelledby="approach-title"><div class="shell"><div class="section-heading"><p class="section-kicker"><span class="kicker-index">04 / THE PROCESS</span><span>How we work</span></p><div><h2 id="approach-title" class="display-title">A clear path<br/><em>through complexity.</em></h2><p>Practical engineering, shared understanding and a deliberate handover.</p></div></div><ol class="approach-track">{approach.map(({ title, text }, index) => <li><span class="approach-dot" aria-hidden="true"></span><span class="item-index">0{index + 1} / 05</span><h3>{title}</h3><p>{text}</p></li>)}</ol></div></section>
+
+    <section class="work-section section-pad" id="work" aria-labelledby="work-title"><div class="shell"><div class="section-heading"><p class="section-kicker"><span class="kicker-index">05 / SELECTED WORK</span><span>Applied expertise</span></p><div><h2 id="work-title" class="display-title">The work behind<br/><em>the thinking.</em></h2><p>Representative engagements, anonymized to protect client information.</p></div></div><div class="work-grid">{caseStudies.map((study) => <article class="work-card"><div class="work-card-top"><span>CASE STUDY / {study.number}</span><span aria-hidden="true">↗</span></div><div class="work-card-graphic" aria-hidden="true"><span class="graphic-line"></span><span class="graphic-node"></span><span class="graphic-node"></span><span class="graphic-node"></span></div><h3>{study.title}</h3><div class="case-details"><div><strong>Challenge</strong><p>{study.challenge}</p></div><div><strong>Approach</strong><p>{study.approach}</p></div><div><strong>Outcome</strong><p>{study.outcome}</p></div></div><ul class="tech-tags">{study.technologies.map((tech) => <li>{tech}</li>)}</ul></article>)}</div></div></section>
+
+    <section class="about-section section-pad" id="about" aria-labelledby="about-title"><div class="shell about-grid"><p class="section-kicker"><span class="kicker-index">06 / ABOUT</span><span>Depth that holds up.</span></p><div><h2 id="about-title" class="display-title">Technical depth.<br/><em>Operational sense.</em></h2><p class="about-copy">{site.about}</p><a class="text-link" href="#contact">Let's solve something together <span aria-hidden="true">↗</span></a></div></div><div class="ticker" aria-label="Areas of expertise"><div class="ticker-track" aria-hidden="true">{[...site.capabilities, ...site.capabilities].map((capability) => <span>{capability}<b>✳</b></span>)}</div><span class="sr-only">{site.capabilities.join(', ')}</span></div></section>
+
+    <section class="contact-section section-pad" id="contact" aria-labelledby="contact-title"><div class="shell contact-grid"><div><p class="section-kicker"><span class="kicker-index">07 / CONTACT</span><span>Start here</span></p><h2 id="contact-title" class="display-title">{site.contact.title}<br/><em>{site.contact.subtitle}</em></h2><p class="contact-aside">Tell us what you're trying to build, fix or make easier to operate.</p><div class="contact-decoration" aria-hidden="true"><span>01</span><span>→</span><span>LET'S CONNECT</span></div></div><ContactForm /></div></section>
+  </main>
+  <Footer />
+  <script>
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const serviceItems = Array.from(document.querySelectorAll<HTMLElement>('.service-item'));
+    const serviceVisual = document.querySelector<HTMLElement>('.services-visual');
+    const visualCounter = document.querySelector<HTMLElement>('.visual-counter');
+    const visualCaption = document.querySelector<HTMLElement>('.visual-caption span:first-child');
+    const activateService = (index: number) => {
+      if (!serviceVisual || !visualCounter || !visualCaption) return;
+      const item = serviceItems[index];
+      if (!item) return;
+      serviceVisual.dataset.active = item.dataset.service;
+      visualCounter.textContent = `${String(index + 1).padStart(2, '0')} / 05`;
+      visualCaption.textContent = `${String(index + 1).padStart(2, '0')} — ${item.querySelector('h3')?.textContent?.toUpperCase() ?? ''}`;
+      serviceItems.forEach((entry, i) => entry.classList.toggle('is-active', i === index));
+    };
+    activateService(0);
+    if (!reducedMotion.matches && window.innerWidth > 900 && 'IntersectionObserver' in window) {
+      const loadMotion = async () => {
+        const [{ gsap }, { ScrollTrigger }] = await Promise.all([import('gsap'), import('gsap/ScrollTrigger')]);
+        if (reducedMotion.matches) return;
+        gsap.registerPlugin(ScrollTrigger);
+        serviceItems.forEach((item, index) => ScrollTrigger.create({ trigger: item, start: 'top 55%', end: 'bottom 45%', onEnter: () => activateService(index), onEnterBack: () => activateService(index) }));
+        gsap.fromTo('.diagram-pulse', { strokeDasharray: '8 18', strokeDashoffset: 0 }, { strokeDashoffset: -104, duration: 7, ease: 'none', repeat: -1 });
+        gsap.utils.toArray<HTMLElement>('.approach-track li').forEach((item) => gsap.fromTo(item, { opacity: .38, y: 25 }, { opacity: 1, y: 0, duration: .6, scrollTrigger: { trigger: item, start: 'top 82%', once: true } }));
+      };
+      const observer = new IntersectionObserver((entries) => { if (entries.some((entry) => entry.isIntersecting)) { observer.disconnect(); void loadMotion(); } }, { rootMargin: '500px' });
+      const target = document.querySelector('#services');
+      if (target) observer.observe(target);
+    }
+  </script>
+</BaseLayout>

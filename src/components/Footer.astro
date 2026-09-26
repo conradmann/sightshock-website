@@ -1,0 +1,7 @@
+---
+import { navigation } from '../data/site';
+---
+<footer class="site-footer">
+  <div class="shell footer-top"><a class="wordmark" href="#top"><span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span></span>SIGHTSHOCK</a><p>Infrastructure you can rely on.<br/>Clarity you can build on.</p></div>
+  <div class="shell footer-bottom"><span>© {new Date().getFullYear()} SightShock. All rights reserved.</span><nav aria-label="Footer navigation">{navigation.map(({ label, href }) => <a href={href}>{label}</a>)}</nav><a href="#top">Back to top ↑</a></div>
+</footer>

@@ -1,0 +1,32 @@
+---
+import { navigation } from '../data/site';
+---
+<header class="site-header" id="top">
+  <div class="shell header-inner">
+    <a class="wordmark" href="#top" aria-label="SightShock, back to top"><span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span></span>SIGHTSHOCK</a>
+    <nav class="desktop-nav" aria-label="Main navigation">
+      {navigation.map(({ label, href }) => <a href={href}>{label}</a>)}
+    </nav>
+    <a class="header-contact" href="#contact">Let's talk <span aria-hidden="true">↗</span></a>
+    <button class="menu-toggle" type="button" aria-label="Open navigation" aria-controls="mobile-nav" aria-expanded="false"><span></span><span></span></button>
+  </div>
+  <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation" hidden>
+    {navigation.map(({ label, href }) => <a href={href}>{label}<span aria-hidden="true">↗</span></a>)}
+  </nav>
+</header>
+<script>
+  const toggle = document.querySelector<HTMLButtonElement>('.menu-toggle');
+  const menu = document.querySelector<HTMLElement>('.mobile-nav');
+  if (toggle && menu) {
+    const close = () => { menu.hidden = true; toggle.setAttribute('aria-expanded', 'false'); toggle.setAttribute('aria-label', 'Open navigation'); document.body.classList.remove('menu-open'); };
+    toggle.addEventListener('click', () => {
+      const open = toggle.getAttribute('aria-expanded') !== 'true';
+      menu.hidden = !open;
+      toggle.setAttribute('aria-expanded', String(open));
+      toggle.setAttribute('aria-label', open ? 'Close navigation' : 'Open navigation');
+      document.body.classList.toggle('menu-open', open);
+    });
+    menu.querySelectorAll('a').forEach((link) => link.addEventListener('click', close));
+    window.addEventListener('resize', () => { if (window.innerWidth > 760) close(); });
+  }
+</script>

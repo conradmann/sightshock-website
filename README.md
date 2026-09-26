@@ -32,16 +32,9 @@ npm run preview
 
 ## Contact form
 
-GitHub Pages cannot receive form submissions. Set `PUBLIC_CONTACT_FORM_ENDPOINT` to a full HTTPS endpoint and rebuild the site. Locally, copy `.env.example` to `.env` and fill it in. On GitHub, add the endpoint as a repository **variable** named `PUBLIC_CONTACT_FORM_ENDPOINT` under **Settings → Secrets and variables → Actions → Variables**. Trigger a new deployment after setting it. The endpoint is public in the generated HTML; do not put a secret API key in it. The form uses a spam honeypot and sends with `fetch` expecting a 2xx response and CORS support. Until configured, it reports that submission is unavailable rather than pretending a message was sent.
+GitHub Pages cannot receive form submissions, so the contact form posts directly to [FormSubmit](https://formsubmit.co/). FormSubmit requires no paid backend or account. Set `PUBLIC_FORMSUBMIT_RECIPIENT` to the email address where inquiries should arrive. Locally, copy `.env.example` to `.env` and fill it in. On GitHub, add a repository **variable** named `PUBLIC_FORMSUBMIT_RECIPIENT` under **Settings → Secrets and variables → Actions → Variables**, then run the **Deploy to GitHub Pages** workflow again. The value is visible in the generated HTML; after your first confirmed submission, you can replace the email with the random alias FormSubmit emails you.
 
-Provider options:
-
-- **Formspree:** create a form, use its `https://formspree.io/f/...` endpoint. Configure allowed domains and spam protection in Formspree.
-- **Basin:** create a form and use its HTTPS form endpoint. Enable AJAX/CORS submissions and spam protection in Basin.
-- **Web3Forms:** their standard endpoint needs an access key posted as a form field. Add a configured `access_key` hidden field in `src/components/ContactForm.astro` and use `https://api.web3forms.com/submit`; Web3Forms access keys are intended for client-side use. Set allowed domains and spam protection in its dashboard.
-- **Other static-site provider:** use a provider endpoint accepting browser `POST`/`FormData`, CORS, and an `Accept: application/json` response. Adjust the form script for any provider-specific fields or response format.
-
-Before launch, connect a provider and send a real test submission. See `DEPLOYMENT.md` for hosting and domain setup.
+The first submission triggers a confirmation email from FormSubmit. Open that email and confirm the address before relying on the form. Submit a second real test and check your inbox and spam folder. FormSubmit handles the confirmation and CAPTCHA on its own pages; the site uses an ordinary HTML POST and a hidden `_honey` spam field. Until a recipient is configured, the submit button is disabled. See `DEPLOYMENT.md` for hosting and domain setup.
 
 ## Deployment
 

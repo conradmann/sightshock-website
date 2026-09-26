@@ -1,41 +1,17 @@
 ---
-const endpoint = import.meta.env.PUBLIC_CONTACT_FORM_ENDPOINT?.trim() || '';
-const configured = /^https:\/\//i.test(endpoint);
+const recipient = import.meta.env.PUBLIC_FORMSUBMIT_RECIPIENT?.trim() || '';
+const configured = Boolean(recipient) && !/[\s/]/.test(recipient);
+const action = configured ? `https://formsubmit.co/${recipient}` : undefined;
 ---
-<form class="contact-form" action={configured ? endpoint : undefined} method="POST" data-contact-form data-configured={String(configured)}>
+<form class="contact-form" action={action} method="POST" data-contact-form>
+  <input type="hidden" name="_subject" value="New SightShock website inquiry" />
+  <input type="hidden" name="_template" value="table" />
   <div class="form-row">
     <label>Name <input name="name" type="text" autocomplete="name" required placeholder="Your name" /></label>
     <label>Company <input name="company" type="text" autocomplete="organization" placeholder="Your organization" /></label>
   </div>
   <label>Email <input name="email" type="email" autocomplete="email" required placeholder="you@company.com" /></label>
   <label>Message <textarea name="message" rows="5" required placeholder="Tell us what you're working through..."></textarea></label>
-  <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" class="honeypot" aria-hidden="true" />
-  <div class="form-submit"><button class="button button-accent" type="submit">Send inquiry <span aria-hidden="true">↗</span></button><p class="form-note">{configured ? 'Your message is sent securely through our form provider.' : 'Form provider setup is pending. Submissions are not live yet.'}</p></div>
-  <p class="form-status" role="status" aria-live="polite" hidden></p>
+  <input type="text" name="_honey" tabindex="-1" autocomplete="off" class="honeypot" aria-hidden="true" />
+  <div class="form-submit"><button class="button button-accent" type="submit" disabled={!configured}>Send inquiry <span aria-hidden="true">↗</span></button><p class="form-note">{configured ? 'Your message will be sent to SightShock.' : 'Contact form setup is pending. Submissions are not live yet.'}</p></div>
 </form>
-<script>
-  const form = document.querySelector<HTMLFormElement>('[data-contact-form]');
-  if (form) {
-    const status = form.querySelector<HTMLElement>('.form-status');
-    const button = form.querySelector<HTMLButtonElement>('button[type="submit"]');
-    form.addEventListener('submit', async (event) => {
-      event.preventDefault();
-      if (!status || !button) return;
-      status.hidden = false;
-      if (form.dataset.configured !== 'true') {
-        status.textContent = 'The contact form is being connected. Please check back shortly.';
-        return;
-      }
-      button.disabled = true;
-      status.textContent = 'Sending your message…';
-      try {
-        const response = await fetch(form.action, { method: 'POST', body: new FormData(form), headers: { Accept: 'application/json' } });
-        if (!response.ok) throw new Error('Submission failed');
-        form.reset();
-        status.textContent = 'Thanks for reaching out. Your message has been sent.';
-      } catch {
-        status.textContent = 'Your message could not be sent. Please try again in a moment.';
-      } finally { button.disabled = false; }
-    });
-  }
-</script>

@@ -27,7 +27,7 @@ jobs:
       - uses: actions/configure-pages@v5
       - run: npm run build
         env:
-          PUBLIC_CONTACT_FORM_ENDPOINT: ${{ vars.PUBLIC_CONTACT_FORM_ENDPOINT }}
+          PUBLIC_FORMSUBMIT_RECIPIENT: ${{ vars.PUBLIC_FORMSUBMIT_RECIPIENT }}
       - uses: actions/upload-pages-artifact@v3
         with:
           path: dist
